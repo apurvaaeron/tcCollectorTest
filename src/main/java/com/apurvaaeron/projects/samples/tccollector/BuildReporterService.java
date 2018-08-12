@@ -3,6 +3,7 @@ package com.apurvaaeron.projects.samples.tccollector;
 import com.apurvaaeron.projects.samples.tccollector.temp.BuildDataCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.NumberUtils;
 
 import java.util.Map;
 
@@ -16,16 +17,32 @@ public class BuildReporterService {
     private TCRESTClient tcrestClient;
 
     public void reportBuild(TCWebhookReqDto reqDto) {
-        Map buildByBuildID = tcrestClient.getBuildByBuildID(reqDto.getBuild().getBuildId());
-        Map changesByBuildId = tcrestClient.getChangesByBuildId(reqDto.getBuild().getBuildId());
-        Map statisticsByBuildId = tcrestClient.getBuildStatisticsByBuildId(reqDto.getBuild().getBuildId());
+        GetBuildByIdDto buildByBuildID = tcrestClient.getBuildByBuildID(reqDto.getBuild().getBuildId());
+        GetChangesByBuildIdDto changesByBuildId = tcrestClient.getChangesByBuildId(reqDto.getBuild().getBuildId());
+        GetBuildStatisticsByBuildIdDto statisticsByBuildId = tcrestClient.getBuildStatisticsByBuildId(reqDto.getBuild().getBuildId());
         BuildDataCreateRequest request =  prepareBuildDataReportRequest(buildByBuildID, changesByBuildId, statisticsByBuildId);
 
     }
 
-    private BuildDataCreateRequest prepareBuildDataReportRequest(Map buildByBuildID, Map changesByBuildId, Map statisticsByBuildId) {
+    private BuildDataCreateRequest prepareBuildDataReportRequest(GetBuildByIdDto b, GetChangesByBuildIdDto c, GetBuildStatisticsByBuildIdDto s) {
+        BuildDataCreateRequest request = new BuildDataCreateRequest();
+        request.setBuildStatus(b.getState());
+        request.setBuildUrl(b.getWebUrl());
+
+        request.setEndTime(0l);//TODO
+        request.setStartTime(0l);//TODO
+        request.setInstanceUrl("N/A");
+        request.setJobName(b.getBuildType().getProjectName());
+        //TODO
+
+                //Stats
+
         //TODO
         return null;
+    }
+
+    private long toLongTime(String date) {
+        return 0;
     }
 
 

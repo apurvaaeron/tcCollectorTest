@@ -24,24 +24,24 @@ public class TCRESTClient {
     @Value("${authuser}")
     private String authuser;
 
-    Map getBuildByBuildID(String buildId){
+    GetBuildByIdDto getBuildByBuildID(String buildId){
         SSLUtil.turnOffSslChecking();
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/builds/id:"+buildId, HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "password")), Map.class);
+        ResponseEntity<GetBuildByIdDto> exchange = restTemplate.exchange(url + "app/rest/builds/id:" + buildId, HttpMethod.GET, new HttpEntity<GetBuildByIdDto>(createHeaders("apurvaaeron@gmail.com", "pwd")), GetBuildByIdDto.class);
         return exchange.getBody();
     }
 
-    Map getBuildStatisticsByBuildId(String buildId){
+    GetBuildStatisticsByBuildIdDto  getBuildStatisticsByBuildId(String buildId){
         SSLUtil.turnOffSslChecking();
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/builds/id:" + buildId + "/statistics", HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "password")), Map.class);
+        ResponseEntity<GetBuildStatisticsByBuildIdDto> exchange = restTemplate.exchange(url + "app/rest/builds/id:" + buildId + "/statistics", HttpMethod.GET, new HttpEntity<GetBuildStatisticsByBuildIdDto>(createHeaders("apurvaaeron@gmail.com", "pwd")), GetBuildStatisticsByBuildIdDto.class);
         return exchange.getBody();
     }
 
-    Map getChangesByBuildId(String buildId){
+    GetChangesByBuildIdDto getChangesByBuildId(String buildId){
         SSLUtil.turnOffSslChecking();
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/changes?locator=build:(id:" + buildId + ")", HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "password")), Map.class);
+        ResponseEntity<GetChangesByBuildIdDto> exchange = restTemplate.exchange(url + "app/rest/changes?locator=build:(id:" + buildId + ")", HttpMethod.GET, new HttpEntity<GetChangesByBuildIdDto>(createHeaders("apurvaaeron@gmail.com", "pwd")), GetChangesByBuildIdDto.class);
         return exchange.getBody();
     }
 
