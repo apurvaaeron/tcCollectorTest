@@ -1,4 +1,4 @@
-package test;
+package com.apurvaaeron.projects.samples.tccollector;
 
 import java.util.List;
 

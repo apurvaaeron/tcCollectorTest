@@ -1,4 +1,4 @@
-package test;
+package com.apurvaaeron.projects.samples.tccollector;
 
 /**
  * Created by apurv on 12-08-2018.

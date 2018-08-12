@@ -1,4 +1,4 @@
-package test.temp;
+package com.apurvaaeron.projects.samples.tccollector.temp;
 
 public enum CommitType {
     NotBuilt, //maven release commits that are not built

@@ -1,4 +1,4 @@
-package test.temp;
+package com.apurvaaeron.projects.samples.tccollector.temp;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
