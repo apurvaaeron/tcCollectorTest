@@ -27,21 +27,21 @@ public class TCRESTClient {
     Map getBuildByBuildID(String buildId){
         SSLUtil.turnOffSslChecking();
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/builds/id:"+buildId, HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "41777812#JJaa")), Map.class);
+        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/builds/id:"+buildId, HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "password")), Map.class);
         return exchange.getBody();
     }
 
     Map getBuildStatisticsByBuildId(String buildId){
         SSLUtil.turnOffSslChecking();
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/builds/id:" + buildId + "/statistics", HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "41777812#JJaa")), Map.class);
+        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/builds/id:" + buildId + "/statistics", HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "password")), Map.class);
         return exchange.getBody();
     }
 
     Map getChangesByBuildId(String buildId){
         SSLUtil.turnOffSslChecking();
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/changes?locator=build:(id:" + buildId + ")", HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "41777812#JJaa")), Map.class);
+        ResponseEntity<Map> exchange = restTemplate.exchange(url + "app/rest/changes?locator=build:(id:" + buildId + ")", HttpMethod.GET, new HttpEntity<Map>(createHeaders("apurvaaeron@gmail.com", "password")), Map.class);
         return exchange.getBody();
     }
 
